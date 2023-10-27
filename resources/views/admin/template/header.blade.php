@@ -5,14 +5,17 @@
                 href="javascript:void(0);"></a>
             <div class="responsive-logo">
                 <a href="index.html" class="header-logo">
-                    <img src="../assets/images/brand/logo-3.png" class="mobile-logo logo-1" alt="logo">
-                    <img src="../assets/images/brand/logo.png" class="mobile-logo dark-logo-1" alt="logo">
+                    <img src="{{ url('/assets') }}/images/brand/logo-3.png" class="mobile-logo logo-1" alt="logo">
+                    <img src="{{ url('/assets') }}/images/brand/logo.png" class="mobile-logo dark-logo-1"
+                        alt="logo">
                 </a>
             </div>
             <!-- sidebar-toggle-->
             <a class="logo-horizontal " href="index.html">
-                <img src="../assets/images/brand/logo.png" class="header-brand-img desktop-logo" alt="logo">
-                <img src="../assets/images/brand/logo-3.png" class="header-brand-img light-logo1" alt="logo">
+                <img src="{{ url('/assets') }}/images/brand/logo.png" class="header-brand-img desktop-logo"
+                    alt="logo">
+                <img src="{{ url('/assets') }}/images/brand/logo-3.png" class="header-brand-img light-logo1"
+                    alt="logo">
             </a>
             <!-- LOGO -->
             <div class="main-header-center ms-3 d-none d-lg-block">
@@ -123,7 +126,7 @@
                                     <div class="message-menu">
                                         <a class="dropdown-item d-flex" href="chat.html">
                                             <span class="avatar avatar-md brround me-3 align-self-center cover-image"
-                                                data-bs-image-src="../assets/images/users/1.jpg"></span>
+                                                data-bs-image-src="{{ url('/assets') }}/images/users/1.jpg"></span>
                                             <div class="wd-90p">
                                                 <div class="d-flex">
                                                     <h5 class="mb-1">Madeleine</h5>
@@ -136,7 +139,7 @@
                                         </a>
                                         <a class="dropdown-item d-flex" href="chat.html">
                                             <span class="avatar avatar-md brround me-3 align-self-center cover-image"
-                                                data-bs-image-src="../assets/images/users/12.jpg"></span>
+                                                data-bs-image-src="{{ url('/assets') }}/images/users/12.jpg"></span>
                                             <div class="wd-90p">
                                                 <div class="d-flex">
                                                     <h5 class="mb-1">Anthony</h5>
@@ -149,7 +152,7 @@
                                         </a>
                                         <a class="dropdown-item d-flex" href="chat.html">
                                             <span class="avatar avatar-md brround me-3 align-self-center cover-image"
-                                                data-bs-image-src="../assets/images/users/4.jpg"></span>
+                                                data-bs-image-src="{{ url('/assets') }}/images/users/4.jpg"></span>
                                             <div class="wd-90p">
                                                 <div class="d-flex">
                                                     <h5 class="mb-1">Olivia</h5>
@@ -162,7 +165,7 @@
                                         </a>
                                         <a class="dropdown-item d-flex" href="chat.html">
                                             <span class="avatar avatar-md brround me-3 align-self-center cover-image"
-                                                data-bs-image-src="../assets/images/users/15.jpg"></span>
+                                                data-bs-image-src="{{ url('/assets') }}/images/users/15.jpg"></span>
                                             <div class="wd-90p">
                                                 <div class="d-flex">
                                                     <h5 class="mb-1">Sanderson</h5>
@@ -185,7 +188,7 @@
                                 <a href="javascript:void(0);" data-bs-toggle="dropdown"
                                     class="nav-link leading-none d-flex px-1">
                                     <span>
-                                        <img src="../assets/images/users/8.jpg" alt="profile-user"
+                                        <img src="{{ url('/assets') }}/images/users/8.jpg" alt="profile-user"
                                             class="avatar  profile-user brround cover-image">
                                     </span>
                                 </a>
@@ -197,7 +200,7 @@
                                         </div>
                                     </div>
                                     <div class="dropdown-divider m-0"></div>
-                                    <a class="dropdown-item" href="profile.html">
+                                    <a class="dropdown-item" href="{{ url('/admin/pengaturan/profile_saya') }}">
                                         <i class="dropdown-icon fe fe-user"></i> Profile
                                     </a>
                                     <a class="dropdown-item" href="email.html">

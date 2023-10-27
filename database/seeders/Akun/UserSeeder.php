@@ -31,14 +31,14 @@ class UserSeeder extends Seeder
             'role_id' => '2',
             'no_telp' => '0891674112126',
         ]);
-        User::create([
-            'name' => 'client',
-            'username' => 'client',
-            'email' => 'client@example.com',
-            'password' => bcrypt("password"),
-            'alamat' => 'anjatan',
-            'role_id' => '3',
-            'no_telp' => '089167489126',
-        ]);
+        // User::create([
+        //     'name' => 'client',
+        //     'username' => 'client',
+        //     'email' => 'client@example.com',
+        //     'password' => bcrypt("password"),
+        //     'alamat' => 'anjatan',
+        //     'role_id' => '3',
+        //     'no_telp' => '089167489126',
+        // ]);
     }
 }

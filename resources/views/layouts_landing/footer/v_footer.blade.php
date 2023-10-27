@@ -1,77 +1,72 @@
-<div class="container-fluid bg-dark text-light footer wow fadeIn" data-wow-delay="0.1s">
-    <div class="container pb-5">
-        <div class="row g-5">
-            <div class="col-md-6 col-lg-4">
-                <div class="bg-primary rounded p-4">
-                    <a href="index.html">
-                        <h1 class="text-white text-uppercase mb-3">Hotelier</h1>
-                    </a>
-                    <p class="text-white mb-0">
-                        Download <a class="text-dark fw-medium"
-                            href="https://freewebsitecode.com/hotel-html-template-pro">Hotelier – Premium Version</a>,
-                        build a professional website for your hotel business and grab the attention of new visitors upon
-                        your site’s launch.
-                    </p>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3">
-                <h6 class="section-title text-start text-primary text-uppercase mb-4">Contact</h6>
-                <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Location, City, Country</p>
-                <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
-                <p class="mb-2"><i class="fa fa-envelope me-3"></i>info@example.com</p>
-                <div class="d-flex pt-2">
-                    <a class="btn btn-outline-light btn-social" href="https://freewebsitecode.com"><i
-                            class="fab fa-twitter"></i></a>
-                    <a class="btn btn-outline-light btn-social" href="https://facebook.com/freewebsitecode"><i
-                            class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-outline-light btn-social" href="https://youtube.com/freewebsitecode"><i
-                            class="fab fa-youtube"></i></a>
-                    <a class="btn btn-outline-light btn-social" href="https://freewebsitecode.com"><i
-                            class="fab fa-linkedin-in"></i></a>
-                </div>
-            </div>
-            <div class="col-lg-5 col-md-12">
-                <div class="row gy-5 g-4">
-                    <div class="col-md-6">
-                        <h6 class="section-title text-start text-primary text-uppercase mb-4">Company</h6>
-                        <a class="btn btn-link" href="">About Us</a>
-                        <a class="btn btn-link" href="">Contact Us</a>
-                        <a class="btn btn-link" href="">Privacy Policy</a>
-                        <a class="btn btn-link" href="">Terms & Condition</a>
-                        <a class="btn btn-link" href="">Support</a>
-                    </div>
-                    <div class="col-md-6">
-                        <h6 class="section-title text-start text-primary text-uppercase mb-4">Services</h6>
-                        <a class="btn btn-link" href="">Food & Restaurant</a>
-                        <a class="btn btn-link" href="">Spa & Fitness</a>
-                        <a class="btn btn-link" href="">Sports & Gaming</a>
-                        <a class="btn btn-link" href="">Event & Party</a>
-                        <a class="btn btn-link" href="">GYM & Yoga</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+<footer class="footer-section">
     <div class="container">
-        <div class="copyright">
+        <div class="footer-text">
             <div class="row">
-                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                    &copy; <a class="border-bottom" href="https://freewebsitecode.com">Your Site Name</a>, All Right
-                    Reserved.
-
-
-                    Designed By <a class="border-bottom" href="https://freewebsitecode.com">Free Website Code</a>
+                <div class="col-lg-4">
+                    <div class="ft-about">
+                        <div class="logo">
+                            <a href="#">
+                                <img src="{{ url('/layouts_landing') }}/img/footer-logo.png" alt="">
+                            </a>
+                        </div>
+                        <p>We inspire and reach millions of travelers<br /> across 90 local websites</p>
+                        <div class="fa-social">
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-tripadvisor"></i></a>
+                            <a href="#"><i class="fa fa-instagram"></i></a>
+                            <a href="#"><i class="fa fa-youtube-play"></i></a>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-6 text-center text-md-end">
-                    <div class="footer-menu">
-                        <a href="">Home</a>
-                        <a href="">Cookies</a>
-                        <a href="">Help</a>
-                        <a href="">FQAs</a>
+                <div class="col-lg-3 offset-lg-1">
+                    <div class="ft-contact">
+                        <h6>Contact Us</h6>
+                        <ul>
+                            <li>(12) 345 67890</li>
+                            <li>info.colorlib@gmail.com</li>
+                            <li>856 Cordia Extension Apt. 356, Lake, United State</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 offset-lg-1">
+                    <div class="ft-newslatter">
+                        <h6>New latest</h6>
+                        <p>Get the latest updates and offers.</p>
+                        <form action="#" class="fn-form">
+                            <input type="text" placeholder="Email">
+                            <button type="submit"><i class="fa fa-send"></i></button>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <br>
-</div>
+    <div class="copyright-option">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7">
+                    <ul>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Terms of use</a></li>
+                        <li><a href="#">Privacy</a></li>
+                        <li><a href="#">Environmental Policy</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-5">
+                    <div class="co-text">
+                        <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                            Copyright &copy;
+                            <script>
+                                document.write(new Date().getFullYear());
+                            </script> All rights reserved | This template is made with <i
+                                class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com"
+                                target="_blank">Colorlib</a>
+                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>

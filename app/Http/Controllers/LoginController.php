@@ -19,27 +19,28 @@ class LoginController extends Controller
     {
         $user = User::where("username", $request->username)->first();
 
+
         if (!$user) {
-            Alert::error('Login Gagal', 'Akun tidak terdaftar');
+            Alert::error('Login Gagal', 'Periksa Kembali Username & Password Anda');
             return back();
         }
         if (!Hash::check($request->password, $user->password)) {
-            Alert::error('Login Gagal', 'Password Anda Salah');
+            Alert::error('Login Gagal', 'Periksa Kembali Username & Password Anda');
             return back();
         }
         if (Auth::attempt(["username" => $request->username, "password" => $request->password])) {
             $request->session()->regenerate();
 
             if ($user->role_id == 1) {
-                return redirect("/admin")->withSuccess('Selamat Anda Berhasil Login sebagai "Admin"');
+                return redirect("/admin/dashboard")->withSuccess('Selamat Anda Berhasil Login, Selamat Datang ' . Auth::user()->name);
             } else if ($user->role_id == 2) {
-                return redirect("/mua")->withSuccess('Selamat Anda Berhasil Login sebagai "MUA"');
+                return redirect("/mua/dashboard")->withSuccess('Selamat Anda Berhasil Login, Selamat Datang ' . Auth::user()->name);
             } else if ($user->role_id == 3) {
-                return redirect("/client")->withSuccess('Selamat Anda Berhasil Login sebagai "CLIENT"');
+                return redirect("/client/dashboard")->withSuccess('Selamat Anda Berhasil Login, Selamat Datang ' . Auth::user()->name);
             }
         } else {
-            return back();
             Alert::error('Login Gagal', 'Password salah');
+            return back();
         }
     }
 

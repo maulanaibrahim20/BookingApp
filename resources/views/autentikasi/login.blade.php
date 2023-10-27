@@ -6,7 +6,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--===============================================================================================-->
-    <link rel="icon" type="image/png" href="{{ url('/autentikasi') }}/images/icons/favicon.ico" />
+    {{-- <link rel="icon" type="image/png" href="{{ url('/autentikasi') }}/images/icons/favicon.ico" /> --}}
+    <link rel="shortcut icon" type="image/x-icon" href="{{ url('/assets') }}/images/brand/favicon.ico" />
+
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="{{ url('/autentikasi') }}/vendor/bootstrap/css/bootstrap.min.css">
     <!--===============================================================================================-->
@@ -69,7 +71,7 @@
                     </div>
 
                     <div class="text-center p-t-136">
-                        <a class="txt2" href="#">
+                        <a class="txt2" href="{{ url('/register') }}">
                             Create your Account
                             <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
                         </a>

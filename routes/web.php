@@ -1,8 +1,17 @@
 <?php
 
+use App\Http\Controllers\Admin\Master\DataProdukController;
+use App\Http\Controllers\Admin\MuaController;
+use App\Http\Controllers\admin\ProfileController;
+use App\Http\Controllers\Akun\ClientController;
+use App\Http\Controllers\Akun\RegisterController;
 use App\Http\Controllers\AppController;
+use App\Http\Controllers\Client\BookingController;
+use App\Http\Controllers\Client\MakeupClientController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\Mua\Master\MakeupController;
+use App\Http\Controllers\Mua\Master\TypeMakeupController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,20 +32,48 @@ Route::get('/', [LandingPageController::class, 'index']);
 Route::group(["middleware" => ['guest']], function () {
     Route::get('/login', [LoginController::class, 'index']);
     Route::post('/login', [LoginController::class, 'login'])->name('login');
+
+    Route::resource('/register', RegisterController::class);
 });
 
 Route::group(['middleware' => ['autentikasi']], function () {
 
 
-    Route::get('/admin', [AppController::class, 'admin']);
-    Route::get('/admin/client', function () {
-        return view('admin.pages.client');
+    Route::get('/admin/dashboard', [AppController::class, 'admin']);
+    Route::get('/admin/pengaturan/profile_saya', function () {
+        return view('admin.pages.pengaturan.profile');
     });
+    Route::resource('/admin/pengaturan/profile_saya/edit_profile', ProfileController::class);
 
 
-    Route::get('/mua', [AppController::class, 'mua']);
-    Route::get('/client', [AppController::class, 'client']);
+    //crud daftar akun mua
+    Route::resource('/admin/reg/mua', MuaController::class);
+    Route::resource('/admin/reg/client', ClientController::class);
 
+    //curd master Data Produk
+    Route::resource('/admin/master/data_produk', DataProdukController::class);
+    //untuk jquery mengupdate status
+    Route::post('/admin/master/data_produk/updateStatus', [DataProdukController::class, 'updateStatus']);
+
+    // Route::get('/admin/master/data_produk/change', function () {
+    //     return view('admin.pages.master.active');
+    // });
+
+
+    Route::get('/mua/dashboard', [AppController::class, 'mua']);
+    Route::resource('/mua/makeup', MakeupController::class);
+    //getdata untuk typenya
+    Route::post('/mua/makeup/getDataType', [MakeupController::class, 'getDataType']);
+
+    Route::resource('/mua/master/type_makeup', TypeMakeupController::class);
+
+
+    Route::get('/client/dashboard', [AppController::class, 'client']);
+
+    Route::get('/client/makeup', [MakeupClientController::class, 'index']);
+
+
+    Route::post('/booking', [BookingController::class, 'store']);
 
 
 
