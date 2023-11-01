@@ -38,6 +38,8 @@ Route::group(["middleware" => ['guest']], function () {
 
 Route::group(['middleware' => ['autentikasi']], function () {
 
+    Route::get('/LandingGetDataType', [LandingPageController::class, 'getDataTypeLanding']);
+
 
     Route::get('/admin/dashboard', [AppController::class, 'admin']);
     Route::get('/admin/pengaturan/profile_saya', function () {

@@ -1,5 +1,4 @@
-@extends('landing')
-@section('hero')
+<section class="hero-section">
     <div class="container">
         <div class="row">
             <div class="col-lg-6">
@@ -66,7 +65,7 @@
         <div class="hs-item set-bg" data-setbg="{{ url('/layouts_landing') }}/img/hero/hero-2.jpg"></div>
         <div class="hs-item set-bg" data-setbg="{{ url('/layouts_landing') }}/img/hero/hero-3.jpg"></div>
     </div>
-@endsection
+</section>
 
 {{-- Start Modal --}}
 {{-- <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
@@ -121,8 +120,8 @@
     <script>
         $(document).ready(function() {
             // Tangani perubahan pada dropdown 'makeup'
-            console.log('hallo');
             $('#makeup').on('change', function() {
+                console.log('hallo');
                 var makeupId = $(this).val();
 
                 // Lakukan permintaan Ajax untuk mengambil data 'type' yang sesuai

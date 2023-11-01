@@ -12,8 +12,8 @@
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Lora:400,700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Cabin:400,500,600,700&display=swap" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script script src="{{ url('/assets') }}/js/jquery.min.js"></script>
+    {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
+    {{-- <script script src="{{ url('/assets') }}/js/jquery.min.js"></script> --}}
 
 
     <!-- Css Styles -->
@@ -88,7 +88,71 @@
 
     <!-- Hero Section Begin -->
     <section class="hero-section">
-        @yield('hero')
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="hero-text">
+                        <h1>Sona A Luxury Hotel</h1>
+                        <p>Here are the best hotel booking sites, including recommendations for international
+                            travel and for finding low-priced hotel rooms.</p>
+                        <a href="#" class="primary-btn">Discover Now</a>
+                    </div>
+                </div>
+                @if (empty(Auth::user()->name))
+                @else
+                    <div class="col-xl-4 col-lg-5 offset-xl-2 offset-lg-1">
+                        <div class="booking-form">
+                            <h3>Booking Your Makeup</h3>
+                            <form action="{{ url('/booking') }}" method="post">
+                                @csrf
+                                <div class="check-date">
+                                    <label for="name_event">Type Event</label>
+                                    <input type="text" class="name-input" id="name" name="name_event">
+                                    <i class="fa fa-user"></i>
+                                </div>
+                                <div class="check-date">
+                                    <label for="date-input">Tanggal Event:</label>
+                                    <input type="text" class="date-input" id="date-input" name="date">
+                                    <i class="icon_calendar"></i>
+                                </div>
+
+                                <div class="select-option">
+                                    <label for="makeup">Makeup:</label>
+                                    <select name="makeup" class="form-control makeup" id="makeup">
+                                        <option value="">- Pilih -</option>
+                                        @foreach ($makeup as $item)
+                                            <option value="{{ $item['id'] }}">
+                                                {{ $item['name'] }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+
+                                <div class="select-option">
+                                    <label for="type_makeup">Type Makeup:</label>
+                                    <select name="type_makeup" class="form-control type_makeup" id="type_makeup">
+                                        <option value="">- Pilih type Makeup -</option>
+                                    </select>
+                                </div>
+                                <div class="input-field">
+                                    <label for="date-input">Tanggal Event:</label>
+                                    <input type="time" id="time" name="time">
+                                    <i class="fa fa-clock"></i>
+                                </div>
+                                <button type="submit" class="btn btn-primary">
+                                    Submit
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                @endif
+            </div>
+        </div>
+        <div class="hero-slider owl-carousel">
+            <div class="hs-item set-bg" data-setbg="{{ url('/layouts_landing') }}/img/hero/hero-1.jpg"></div>
+            <div class="hs-item set-bg" data-setbg="{{ url('/layouts_landing') }}/img/hero/hero-2.jpg"></div>
+            <div class="hs-item set-bg" data-setbg="{{ url('/layouts_landing') }}/img/hero/hero-3.jpg"></div>
+        </div>
     </section>
 
     {{-- @include('layouts_landing.hero.v_hero') --}}
@@ -133,21 +197,32 @@
     @include('layouts_landing.js.style_js')
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script script src="{{ url('/assets') }}/js/jquery.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    {{-- <script script src="{{ url('/assets') }}/js/jquery.min.js"></script> --}}
+    {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
 
 
     @include('sweetalert::alert')
 
-    @yield('landing_js')
-    <script>
+    <script type="text/javascript">
         $(document).ready(function() {
-            console.log('hallo');
+            $("#makeup").change(function() {
+                let makeup = $("#makeup").val();
+                $.ajax({
+                    url: "{{ url('/LandingGetDataType') }}",
+                    type: "GET",
+                    data: {
+                        makeup: makeup
+                    },
+                    success: function(res) {
+                        $("#type_makeup").html(res);
+                    },
+                    error: function() {
+                        alert('Gagal mengambil data detail makeup.');
+                    }
+                });
+            });
         });
     </script>
-
-
-
 </body>
 
 </html>
