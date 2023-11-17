@@ -36,6 +36,7 @@
                                     <th>alamat</th>
                                     <th>No Telepon</th>
                                     <th>Pekerjaan</th>
+                                    <th>ID CUST</th>
                                     <th class="text-center">Action</th>
                                 </tr>
                             </thead>
@@ -49,6 +50,7 @@
                                         <td>{{ $data->getCustomer->alamat }}</td>
                                         <td>{{ $data->getCustomer->no_telp }}</td>
                                         <td>{{ $data->pekerjaan }}</td>
+                                        <td>{{ $data->id_customer }}</td>
                                         <td class="text-center">
                                             <a class="btn btn-icon btn-warning" data-bs-toggle="modal"
                                                 data-bs-target="#EditModal{{ $data->id }}"><i

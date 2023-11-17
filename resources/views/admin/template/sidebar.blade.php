@@ -84,6 +84,10 @@
                         href="{{ url('/mua/makeup') }}">
                         <i class="side-menu__icon fe fe-feather"></i><span class="side-menu__label">Make Up
                             Kategori</span></a>
+                    <a class="side-menu__item {{ Request::is('mua/booking*') ? 'active' : '' }}" data-bs-toggle="slide"
+                        href="{{ url('/mua/booking') }}">
+                        <i class="side-menu__icon fe fe-book"></i><span class="side-menu__label">Make Up
+                            Booking</span></a>
                     <li class="sub-category">
                         <h3>Master Data</h3>
                     </li>
@@ -106,12 +110,13 @@
                 @endcan
                 @can('client')
                     <li class="sub-category">
-                        <h3>Main</h3>
+                        <h3>List Booking</h3>
                     </li>
-                    <a class="side-menu__item {{ Request::is('/client/makeup*') ? 'active' : '' }}" data-bs-toggle="slide"
-                        href="{{ url('/client/makeup') }}">
-                        <i class="side-menu__icon fe fe-feather"></i><span class="side-menu__label">Make Up
-                            Kategori</span></a>
+                    <a class="side-menu__item {{ Request::is('client/booking*') ? 'active' : '' }}" data-bs-toggle="slide"
+                        href="{{ url('client/booking') }}">
+                        <i class="side-menu__icon fe fe-book"></i><span class="side-menu__label">Booking</span>
+                    </a>
+
                     <li class="sub-category">
                         <h3>Master Data</h3>
                     </li>

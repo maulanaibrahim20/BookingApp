@@ -16,7 +16,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="{{ url('/assets') }}/images/brand/favicon.ico" />
 
     <!-- TITLE -->
-    <title>Booking – App </title>
+    <title>Gawe Ayu Booking Web</title>
 
     <!-- BOOTSTRAP CSS -->
     <link id="style" href="{{ url('/assets') }}/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
@@ -27,6 +27,8 @@
 
     <!--- FONT-ICONS CSS -->
     <link href="{{ url('/assets') }}/css/icons.css" rel="stylesheet" />
+
+    @yield('css')
 
 </head>
 

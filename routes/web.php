@@ -12,6 +12,7 @@ use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\Mua\Master\MakeupController;
 use App\Http\Controllers\Mua\Master\TypeMakeupController;
+use App\Http\Controllers\Mua\MuaBookingController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -41,6 +42,7 @@ Route::group(['middleware' => ['autentikasi']], function () {
     Route::get('/LandingGetDataType', [LandingPageController::class, 'getDataTypeLanding']);
 
 
+
     Route::get('/admin/dashboard', [AppController::class, 'admin']);
     Route::get('/admin/pengaturan/profile_saya', function () {
         return view('admin.pages.pengaturan.profile');
@@ -68,16 +70,18 @@ Route::group(['middleware' => ['autentikasi']], function () {
     Route::post('/mua/makeup/getDataType', [MakeupController::class, 'getDataType']);
 
     Route::resource('/mua/master/type_makeup', TypeMakeupController::class);
+    Route::get('/mua/booking', [MuaBookingController::class, 'index']);
+
+    Route::post('/mua/booking/changeStatus', [MuaBookingController::class, 'changeStatus']);
 
 
     Route::get('/client/dashboard', [AppController::class, 'client']);
 
-    Route::get('/client/makeup', [MakeupClientController::class, 'index']);
+    Route::resource('client/booking', BookingController::class);
+
 
 
     Route::post('/booking', [BookingController::class, 'store']);
-
-
 
 
     Route::get('/logout', [LoginController::class, 'logout']);

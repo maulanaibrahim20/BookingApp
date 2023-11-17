@@ -2,13 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Mua\Master\Makeup;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class AppController extends Controller
 {
     public function admin()
     {
-        return view('admin.pages.dashboard');
+        $data = [
+            "jumlah_owner" => User::count(),
+            "jumlah_makeup" => Makeup::count()
+        ];
+        return view('admin.pages.dashboard', $data);
     }
 
     public function client()

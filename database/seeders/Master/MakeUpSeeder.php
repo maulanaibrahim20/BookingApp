@@ -16,35 +16,35 @@ class MakeUpSeeder extends Seeder
         Makeup::create([
             'name' => 'Make up Reguler Hijab',
             'description' => 'include makeup and hijab do',
-            'image' => ('dummy_image\img1.png'),
+            'image' => ('images_makeup/img1.png'),
             'user_id' => 2,
             'price' => '250000',
         ]);
         Makeup::create([
             'name' => 'Make up Hair Do',
             'description' => 'include makeup and hijab do',
-            'image' => ('dummy_image\img2.png'),
+            'image' => ('images_makeup/img2.png'),
             'user_id' => 2,
             'price' => '350000',
         ]);
         Makeup::create([
             'name' => 'Engagement Make up Hijab',
             'description' => 'include makeup and hijab do',
-            'image' => ('dummy_image\img1.png'),
+            'image' => ('images_makeup/img1.png'),
             'user_id' => 2,
             'price' => '500000',
         ]);
         Makeup::create([
             'name' => 'Engagement Make up Hair Do',
             'description' => 'include makeup and hijab do',
-            'image' => ('dummy_image\img3.png'),
+            'image' => ('images_makeup/img3.png'),
             'user_id' => 2,
             'price' => '750000',
         ]);
         Makeup::create([
             'name' => 'Prawedding Make up Studio',
             'description' => 'include makeup and hijab do',
-            'image' => ('dummy_image\img2.png'),
+            'image' => ('images_makeup/img2.png'),
             'user_id' => 2,
             'price' => '850000',
         ]);
