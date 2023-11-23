@@ -40,7 +40,6 @@
                             onclick="event.preventDefault(); document.getElementById('login-form').submit();" @endif>
                             Book A Makeup
                         </a>
-
                         @if (!Auth::check())
                             <form id="login-form" action="{{ url('/login') }}">
                             </form>
@@ -85,6 +84,8 @@
                             </div>
                             <div class="form-group">
                                 <label for="description">Harga</label>
+                                <input type="hidden" class="form-control" name="price"
+                                    value="{{ $edit->getMakeup->price }}" readonly>
                                 <input type="text" class="form-control"
                                     value="Rp.{{ number_format($edit->getMakeup->price, 0, ',', '.') }}" readonly>
                             </div>
