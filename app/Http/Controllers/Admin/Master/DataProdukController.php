@@ -98,8 +98,6 @@ class DataProdukController extends Controller
             $produk->active = $isChecked ? 1 : 0;
             $produk->save();
         }
-
-        // Berikan respons ke klien jika diperlukan
     }
 
     public function destroy($id)

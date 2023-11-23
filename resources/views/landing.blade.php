@@ -49,7 +49,7 @@
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label class="form-label">Nama</label>
-                                    <input class="form-control   mb-4 is-valid state-valid" id="name"
+                                    <input class="form-control mb-4 is-valid state-valid" id="name"
                                         placeholder="Masukan Nama Makeup" required="" type="text" name="name">
                                 </div>
                             </div>
@@ -76,26 +76,14 @@
                             </div>
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label class="form-label">Date</label>
-                                    <input class="form-control" type="text" id="datepicker" name="date"
-                                        value="" />
+                                    <label for="appointmentDate">Tanggal Booking</label>
+                                    <input type="date" class="form-control" name="date" required>
                                 </div>
                             </div>
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label class="form-label">Pilih Waktu</label>
-                                    <select name="waktu" id="waktu">
-                                        <option value="12:00">12:00</option>
-                                        <option value="13:00">13:00</option>
-                                        <option value="14:00">14:00</option>
-                                        <option value="15:00">15:00</option>
-                                        <option value="16:00">16:00</option>
-                                        <option value="17:00">17:00</option>
-                                        <label class="form-label">Atau Isi Sendiri</label>
-                                        <input class="form-control" id="time_alone"
-                                            placeholder="Atau Masukan Sendiri(boleh di kosongkan)" type="text"
-                                            name="time_alone">
-                                    </select>
+                                    <label for="waktu">Waktu</label>
+                                    <input type="time" class="form-control" name="waktu" required />
                                 </div>
                             </div>
                         </div>
@@ -150,7 +138,7 @@
                 rightIcon: '<span class="fa fa-caret-down"></span>'
             },
             minDate: hariIni,
-            defaultDate: hariIni, // Mengatur tanggal minimum ke hari ini
+            defaultDate: hariIni,
         });
         $('#datepicker').val($.datepicker.formatDate('dd-mm-yy', hariIni));
     </script>

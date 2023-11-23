@@ -10,6 +10,7 @@ use Database\Seeders\Master\DataProdukSeeder;
 use Database\Seeders\Master\DetailMakeupSeeder;
 use Database\Seeders\Master\MakeUpSeeder;
 use Database\Seeders\Master\TypeMakeupSeeder;
+use Database\Seeders\ManageContentSeeder;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -25,5 +26,6 @@ class DatabaseSeeder extends Seeder
         $this->call(TypeMakeupSeeder::class);
         $this->call(MakeUpSeeder::class);
         $this->call(DetailMakeupSeeder::class);
+        $this->call(ManageContentSeeder::class);
     }
 }

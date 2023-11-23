@@ -115,6 +115,10 @@
                                         <td ="">{{ date('d F Y', strtotime($view->tanggal_booking)) }}</td>
                                     </tr>
                                     <tr>
+                                        <th>Tanggal Booking</th>
+                                        <td ="">{{ $view->getCustomer->getCustomer->no_telp }}</td>
+                                    </tr>
+                                    <tr>
                                         <th>Status</th>
                                         <td>
                                             @if ($view->status == 0)

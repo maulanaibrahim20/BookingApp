@@ -61,7 +61,7 @@
                                         <td class="text-center">{{ $data->getMakeup->name }}</td>
                                         <td class="text-center">{{ $data->getTypeMakeup->name }}</td>
                                         <td>{{ date('d F Y', strtotime($data->tanggal_booking)) }}</td>
-                                        <td>{{ $data->waktu_booking }}</td>
+                                        <td class="text-center">{{ $data->waktu_booking }}</td>
                                         <td>
                                             @if ($data->status == 0)
                                                 <span class="badge rounded-pill bg-warning me-1 mb-1 mt-1">Pending</span>

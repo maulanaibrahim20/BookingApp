@@ -32,12 +32,11 @@ class BookingController extends Controller
         try {
             $user = Auth::user();
 
-
             if ($user) {
                 $customer = Customer::where('user_id', $user->id)->first();
                 if ($customer) {
                     $makeup = Makeup::where('id', $request->makeup)->first();
-                    $tanggal_booking = Carbon::createFromFormat('m/d/Y', $request->date)->format('Y-m-d');
+                    $tanggal_booking = Carbon::createFromFormat('Y-m-d', $request->date)->format('Y-m-d');
                     Booking::create([
                         'id_booking' =>  "BOOK-" . date("YmdHis"),
                         'id_customer' => $customer->id_customer,

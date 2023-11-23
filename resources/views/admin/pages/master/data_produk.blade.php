@@ -47,16 +47,12 @@
                                         <td>{{ $data->price }}</td>
                                         <td><img src="{{ asset('' . $data->image) }}" style="width:60px;height:60">
                                         </td>
-                                        <td>
-                                            <form action="/admin/master/data_produk/" method="POST">
-                                                @csrf
-                                                <label class="custom-switch">
-                                                    <input type="checkbox" name="custom-switch-checkbox"
-                                                        class="custom-switch-input" data-product-id="{{ $data->id }}"
-                                                        {{ $data->active == 1 ? 'checked' : '' }}>
-                                                    <span class="custom-switch-indicator"></span>
-                                                </label>
-                                            </form>
+                                        <td class="text-success fs-15 fw-semibold">
+                                            @if ($data->managementContent->active == 0)
+                                                <span class="text-danger fs-15 fw-semibold">Non Aktif</span>
+                                            @elseif ($data->managementContent->active == 1)
+                                                <span class="text-success fs-15 fw-semibold">Aktif</span>
+                                            @endif
                                         </td>
                                         <td class="text-center">
                                             <a class="btn btn-primary" data-bs-effect="effect-scale" data-bs-toggle="modal"

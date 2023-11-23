@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\Management\ManageMakeupController;
+use App\Http\Controllers\Admin\Management\ManageProdukController;
 use App\Http\Controllers\Admin\Master\DataProdukController;
 use App\Http\Controllers\Admin\MuaController;
 use App\Http\Controllers\admin\ProfileController;
@@ -39,11 +41,20 @@ Route::group(["middleware" => ['guest']], function () {
 
 Route::group(['middleware' => ['autentikasi']], function () {
 
+    //jquery untuk get data type dari setiap perubahan di select makeup
     Route::get('/LandingGetDataType', [LandingPageController::class, 'getDataTypeLanding']);
 
 
-
     Route::get('/admin/dashboard', [AppController::class, 'admin']);
+
+    Route::get('/admin/monitoring_makeup', [ManageMakeupController::class, 'index']);
+    Route::get('/admin/monitoring_makeup/view/{id}', [ManageMakeupController::class, 'show']);
+    Route::post('/admin/monitoring_makeup/changestatus', [ManageMakeupController::class, 'changeStatus']);
+
+    Route::get('/admin/monitoring_produk', [ManageProdukController::class, 'index']);
+    Route::post('/admin/monitoring_produk/changestatus', [ManageProdukController::class, 'changeStatus']);
+
+
     Route::get('/admin/pengaturan/profile_saya', function () {
         return view('admin.pages.pengaturan.profile');
     });
@@ -77,11 +88,7 @@ Route::group(['middleware' => ['autentikasi']], function () {
 
     Route::get('/client/dashboard', [AppController::class, 'client']);
 
-    Route::resource('client/booking', BookingController::class);
-
-
-
-    Route::post('/booking', [BookingController::class, 'store']);
+    Route::resource('/client/booking', BookingController::class);
 
 
     Route::get('/logout', [LoginController::class, 'logout']);

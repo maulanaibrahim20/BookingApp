@@ -37,6 +37,33 @@
 
                 @can('admin')
                     <li class="sub-category">
+                        <h3>Monitoring</h3>
+                    </li>
+                    <li class="slide">
+                        <a class="side-menu__item {{ Request::segment(2) == 'monitoring_makeup' || Request::segment(2) == 'monitoring_produk' ? 'active' : '' }}"
+                            data-bs-toggle="slide" href="javascript:void(0);">
+                            <i class="side-menu__icon fe fe-server"></i>
+                            <span class="side-menu__label">Monitoring</span>
+                            <i class="angle fa fa-angle-right"></i>
+                        </a>
+                        <ul class="slide-menu"
+                            style="{{ Request::segment(2) == 'monitoring_makeup' || Request::segment(2) == 'monitoring_produk' ? 'display: block;' : 'display: none;' }}">
+                            <li class="side-menu-label1"><a href="javascript:void(0)">Monitoring</a></li>
+                            <li>
+                                <a href="{{ url('/admin/monitoring_makeup') }}"
+                                    class="slide-item {{ Request::segment(2) == 'monitoring_makeup' ? 'active' : '' }}">
+                                    Monitoring Makeup
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ url('/admin/monitoring_produk') }}"
+                                    class="slide-item {{ Request::segment(2) == 'monitoring_produk' ? 'active' : '' }}">
+                                    Monitoring Produk
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="sub-category">
                         <h3>Pages</h3>
                     </li>
                     <li class="slide">
@@ -112,30 +139,10 @@
                     <li class="sub-category">
                         <h3>List Booking</h3>
                     </li>
-                    <a class="side-menu__item {{ Request::is('client/booking*') ? 'active' : '' }}" data-bs-toggle="slide"
-                        href="{{ url('client/booking') }}">
+                    <a class="side-menu__item {{ Request::is('client/booking*') ? 'active' : '' }}"
+                        data-bs-toggle="slide" href="{{ url('client/booking') }}">
                         <i class="side-menu__icon fe fe-book"></i><span class="side-menu__label">Booking</span>
-                    </a>
-
-                    <li class="sub-category">
-                        <h3>Master Data</h3>
-                    </li>
-                    <li class="slide">
-                        <a class="side-menu__item {{ Request::segment(2) == 'master' && Request::segment(3) == 'type_makeup' ? 'active' : '' }}"
-                            data-bs-toggle="slide" href="javascript:void(0;">
-                            <i class="side-menu__icon fa fa-database"></i><span class="side-menu__label">Master
-                                Data</span><i class="angle fa fa-angle-right"></i>
-                        </a>
-                        <ul class="slide-menu"
-                            style="{{ Request::segment(3) == 'type_makeup' ? 'display: block;' : 'display: none;' }}">
-                            <li class="side-menu-label1"><a href="javascript:void(0)">Pages</a></li>
-                            <li>
-                                <a href="{{ url('/mua/master/type_makeup') }}"
-                                    class="slide-item {{ Request::segment(3) == 'type_makeup' ? 'active' : '' }}"> Master
-                                    Type Make Up</a>
-                            </li>
-                        </ul>
-                    </li>
+                    </a>x
                 @endcan
             </ul>
             <div class="slide-right" id="slide-right"><svg xmlns="http://www.w3.org/2000/svg" fill="#7b8191"

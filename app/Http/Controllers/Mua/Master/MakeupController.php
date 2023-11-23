@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Mua\Master;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin\Management\ManagementContent;
 use App\Models\Mua\DetailMakeup;
 use App\Models\Mua\Master\Makeup;
 use App\Models\Mua\Master\TypeMakeup;
@@ -55,6 +56,10 @@ class MakeupController extends Controller
                     'id_type_makeup' => $typeMakeupId,
                 ]);
             }
+            ManagementContent::create([
+                'id_makeup' => $makeupId,
+                'active' => 0,
+            ]);
             Alert::success('Sukses', 'Data berhasil disimpan');
             return back();
         } catch (\Exception $e) {

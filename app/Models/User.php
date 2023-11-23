@@ -3,6 +3,8 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use App\Models\Mua\Master\Makeup;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -52,5 +54,10 @@ class User extends Authenticatable
     public function getAkses()
     {
         return $this->belongsTo("App\Models\Akun\Role", "role_id", "id");
+    }
+
+    public function getMakeup()
+    {
+        return $this->belongsTo(Makeup::class, 'id');
     }
 }

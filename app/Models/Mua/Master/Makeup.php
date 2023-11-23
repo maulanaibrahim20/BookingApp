@@ -2,6 +2,7 @@
 
 namespace App\Models\Mua\Master;
 
+use App\Models\Admin\Management\ManagementContent;
 use App\Models\Mua\DetailMakeup;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -22,5 +23,10 @@ class Makeup extends Model
     public function getMakeup()
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+
+    public function managementContent()
+    {
+        return $this->hasOne(ManagementContent::class, 'id_makeup');
     }
 }

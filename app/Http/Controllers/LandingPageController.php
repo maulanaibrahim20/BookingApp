@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Admin\Management\ManagementContent;
 use App\Models\Akun\Customer;
 use App\Models\Master\Data_Produk;
 use App\Models\Mua\DetailMakeup;
@@ -25,9 +26,10 @@ class LandingPageController extends Controller
         //     }
         // }
 
+        $manage = ManagementContent::where('active', 1)->get();
         $makeup = Makeup::all();
         $produk = Data_Produk::all();
-        return view('landing', compact('makeup', 'produk'));
+        return view('landing', compact('manage', 'produk', 'makeup'));
     }
 
     public function getDataTypeLanding(Request $request)
