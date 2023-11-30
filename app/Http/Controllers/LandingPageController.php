@@ -29,6 +29,9 @@ class LandingPageController extends Controller
         $manage = ManagementContent::where('active', 1)->get();
         $makeup = Makeup::all();
         $produk = Data_Produk::all();
+        // $user = Auth::user();
+
+        // dd($user->email);
         return view('landing', compact('manage', 'produk', 'makeup'));
     }
 

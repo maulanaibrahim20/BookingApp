@@ -5,11 +5,11 @@ namespace App\Models\Payment;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Order extends Model
+class MidtransHistory extends Model
 {
     use HasFactory;
 
-    protected $table = 'order';
-
     protected $guarded = [''];
+
+    protected $table = 'midtrans_history';
 }

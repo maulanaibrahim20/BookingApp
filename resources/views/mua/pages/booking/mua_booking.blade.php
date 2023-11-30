@@ -40,6 +40,7 @@
                                     <th>Type Makeup</th>
                                     <th><strong>status</strong></th>
                                     <th class="text-center"><strong>Action</strong></th>
+                                    <th class="text-center"><strong>invoice</strong></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -65,6 +66,13 @@
                                                 <i class="fa fa-eye"></i>
                                             </a>
                                         </td>
+                                        <td class="text-center">
+                                            <a href="/mua/booking/view_invoice/{{ $data->id_booking }}"
+                                                class="btn btn-primary">
+                                                <i class="fa fa-print"></i> Invoice
+                                            </a>
+                                        </td>
+
                                     </tr>
                                 @endforeach
                             </tbody>

@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('booking', function (Blueprint $table) {
             $table->string('id_booking', 50)->primary();
             $table->string('id_customer');
+            $table->string('id_order')->unique();
             $table->integer('user_id_mua');
             $table->string('name');
             $table->integer('makeup');
@@ -21,9 +22,11 @@ return new class extends Migration
             $table->date('tanggal_booking')->nullable();
             $table->time('waktu_booking')->nullable();
             $table->boolean('status');
+            $table->enum('payment_status', ['unpaid', 'paid']);
             $table->timestamps();
         });
     }
+
 
     /**
      * Reverse the migrations.

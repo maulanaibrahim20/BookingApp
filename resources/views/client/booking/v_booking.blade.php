@@ -5,12 +5,12 @@
     <!-- Required meta tags-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Colorlib Templates">
-    <meta name="author" content="Colorlib">
-    <meta name="keywords" content="Colorlib Templates">
+    <meta name="description" content="Maulana Ibrahim">
+    <meta name="author" content="Maulana Ibrahim">
+    <meta name="keywords" content="Maulana Ibrahim">
 
     <!-- Title Page-->
-    <title>Au Register Forms by Colorlib</title>
+    <title>Booking App--Gawe Ayu</title>
 
     <!-- Icons font CSS-->
     <link href="{{ url('/booking') }}/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet"
@@ -100,11 +100,14 @@
 
                     <div class="p-t-15">
                         <a href="{{ url('/') }}" class="btn btn--radius-2 btn--danger" type="submit">Kembali</a>
-                        <button class="btn btn--radius-2 btn--danger" id="pay-button">Bayar Sekarang</button>
+                        <button class="btn btn--radius-2 btn--blue" id="pay-button">Bayar Sekarang</button>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+
+    <div id="snap-container">
     </div>
 
     <!-- Jquery JS-->
@@ -118,35 +121,30 @@
     <script src="{{ url('/booking') }}/js/global.js"></script>
     @include('sweetalert::alert')
     <script type="text/javascript">
-        // For example trigger on button clicked, or any time you need
         var payButton = document.getElementById('pay-button');
         payButton.addEventListener('click', function() {
-            // Trigger snap popup. @TODO: Replace TRANSACTION_TOKEN_HERE with your transaction token
             window.snap.pay('{{ $snapToken }}', {
                 onSuccess: function(result) {
-                    /* You may add your own implementation here */
-                    alert("payment success!");
+                    window.location.href = '/client/booking/view_invoice/{{ $booking->id_booking }}'
                     console.log(result);
+                    console.log($snapToken);
                 },
                 onPending: function(result) {
-                    /* You may add your own implementation here */
                     alert("wating your payment!");
                     console.log(result);
                 },
                 onError: function(result) {
-                    /* You may add your own implementation here */
                     alert("payment failed!");
                     console.log(result);
                 },
                 onClose: function() {
-                    /* You may add your own implementation here */
                     alert('you closed the popup without finishing the payment');
                 }
             })
         });
     </script>
 
-</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</body>
 
 </html>
 <!-- end document-->

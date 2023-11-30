@@ -11,14 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('order', function (Blueprint $table) {
+        Schema::create('midtrans_history', function (Blueprint $table) {
             $table->id();
-            $table->string('id_booking');
-            $table->string('id_customer');
-            $table->string('id_mua');
-            $table->integer('makeup');
-            $table->bigInteger('total_price');
-            $table->enum('status', ['unpaid', 'paid']);
+            $table->string('order_id');
+            $table->string('status');
+            $table->longText('payload');
             $table->timestamps();
         });
     }
@@ -28,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('order');
+        Schema::dropIfExists('midtrans_history');
     }
 };

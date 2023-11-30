@@ -80,6 +80,10 @@
 <script src="{{ url('/assets') }}/plugins/charts-c3/d3.v5.min.js"></script>
 <script src="{{ url('/assets') }}/plugins/charts-c3/c3-chart.js"></script>
 
+
+<!-- APEXCHART JS -->
+<script src="{{ url('/assets') }}/js/apexcharts.js"></script>
+
 <!-- INDEX JS -->
 
 <script src="{{ url('/assets') }}/js/form-elements.js"></script>

@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>A simple, clean, and responsive HTML invoice template</title>
+    <title>Booking Makeup Artis-Gawe Ayu-Invoice</title>
 
     <style>
         .invoice-box {
@@ -108,14 +108,14 @@
                     <table>
                         <tr>
                             <td class="title">
-                                <img src="https://sparksuite.github.io/simple-html-invoice-template/images/logo.png"
+                                <img src="{{ url('/layouts_landing') }}/img/core-img/gaweayu1.png"
                                     style="width: 100%; max-width: 300px" />
                             </td>
 
                             <td>
-                                Invoice #: 123<br />
-                                Created: January 1, 2023<br />
-                                Due: February 1, 2023
+                                Booking Kode: {{ $booking->id_booking }}<br />
+                                Invoice #: {{ $booking->id_order }}<br />
+                                Created: {{ $booking->created_at }}<br />
                             </td>
                         </tr>
                     </table>
@@ -127,15 +127,15 @@
                     <table>
                         <tr>
                             <td>
-                                Sparksuite, Inc.<br />
-                                12345 Sunny Road<br />
-                                Sunnyville, CA 12345
+                                Gawe Ayu Booking Makeup Artist<br />
+                                Politeknik Negeri Indramayu<br />
+                                Lohbener, Indramayu 45252
                             </td>
 
                             <td>
-                                Acme Corp.<br />
-                                John Doe<br />
-                                john@example.com
+                                {{ $booking->getCustomer->id_customer }}<br />
+                                {{ $booking->getCustomer->getCustomer->name }}<br />
+                                {{ $booking->getCustomer->getCustomer->email }}
                             </td>
                         </tr>
                     </table>
@@ -143,15 +143,20 @@
             </tr>
 
             <tr class="heading">
-                <td>Payment Method</td>
+                <td>Metode Pembayaran</td>
 
-                <td>Check #</td>
+                <td>Harga #</td>
             </tr>
 
             <tr class="details">
-                <td>Check</td>
+                <td>Harga</td>
 
-                <td>1000</td>
+                <td>Rp.{{ number_format($booking->getMakeup->price, 0, ',', '.') }}</td>
+            </tr>
+            <tr class="details">
+                <td>Status</td>
+
+                <td>{{ $booking->payment_statu }}</td>
             </tr>
 
             <tr class="heading">
@@ -161,27 +166,21 @@
             </tr>
 
             <tr class="item">
-                <td>Website design</td>
+                <td>{{ $booking->getMakeup->name }}</td>
 
-                <td>$300.00</td>
-            </tr>
-
-            <tr class="item">
-                <td>Hosting (3 months)</td>
-
-                <td>$75.00</td>
+                <td>{{ $booking->getMakeup->price }}</td>
             </tr>
 
             <tr class="item last">
-                <td>Domain name (1 year)</td>
+                <td>{{ $booking->getTypeMakeup->name }}</td>
 
-                <td>$10.00</td>
+                <td></td>
             </tr>
 
             <tr class="total">
                 <td></td>
 
-                <td>Total: $385.00</td>
+                <td>Total Rp.{{ number_format($booking->getMakeup->price, 0, ',', '.') }}</td>
             </tr>
         </table>
     </div>

@@ -37,6 +37,12 @@
 
                 @can('admin')
                     <li class="sub-category">
+                        <h3>Payment</h3>
+                    </li>
+                    <a class="side-menu__item {{ Request::is('admin/payment_history*') ? 'active' : '' }}"
+                        data-bs-toggle="slide" href="{{ url('/admin/payment_history') }}">
+                        <i class="side-menu__icon fa fa-money"></i><span class="side-menu__label">Payment History</span></a>
+                    <li class="sub-category">
                         <h3>Monitoring</h3>
                     </li>
                     <li class="slide">
@@ -107,10 +113,6 @@
                     <li class="sub-category">
                         <h3>Main</h3>
                     </li>
-                    <a class="side-menu__item {{ Request::is('mua/makeup*') ? 'active' : '' }}" data-bs-toggle="slide"
-                        href="{{ url('/mua/makeup') }}">
-                        <i class="side-menu__icon fe fe-feather"></i><span class="side-menu__label">Make Up
-                            Kategori</span></a>
                     <a class="side-menu__item {{ Request::is('mua/booking*') ? 'active' : '' }}" data-bs-toggle="slide"
                         href="{{ url('/mua/booking') }}">
                         <i class="side-menu__icon fe fe-book"></i><span class="side-menu__label">Make Up
@@ -119,18 +121,25 @@
                         <h3>Master Data</h3>
                     </li>
                     <li class="slide">
-                        <a class="side-menu__item {{ Request::segment(2) == 'master' && Request::segment(3) == 'type_makeup' ? 'active' : '' }}"
-                            data-bs-toggle="slide" href="javascript:void(0;">
+                        <a class="side-menu__item {{ Request::segment(2) == 'master' && (Request::segment(3) == 'type_makeup' || Request::segment(3) == 'makeup') ? 'active' : '' }}"
+                            data-bs-toggle="slide" href="javascript:void(0);">
                             <i class="side-menu__icon fa fa-database"></i><span class="side-menu__label">Master
                                 Data</span><i class="angle fa fa-angle-right"></i>
                         </a>
                         <ul class="slide-menu"
-                            style="{{ Request::segment(3) == 'type_makeup' ? 'display: block;' : 'display: none;' }}">
+                            style="{{ in_array(Request::segment(3), ['type_makeup', 'makeup']) ? 'display: block;' : 'display: none;' }}">
                             <li class="side-menu-label1"><a href="javascript:void(0)">Pages</a></li>
                             <li>
+                                <a href="{{ url('/mua/master/makeup') }}"
+                                    class="slide-item {{ Request::segment(3) == 'makeup' ? 'active' : '' }}">
+                                    Make Up
+                                </a>
+                            </li>
+                            <li>
                                 <a href="{{ url('/mua/master/type_makeup') }}"
-                                    class="slide-item {{ Request::segment(3) == 'type_makeup' ? 'active' : '' }}"> Master
-                                    Type Make Up</a>
+                                    class="slide-item {{ Request::segment(3) == 'type_makeup' ? 'active' : '' }}">
+                                    Type Make Up
+                                </a>
                             </li>
                         </ul>
                     </li>
@@ -142,7 +151,7 @@
                     <a class="side-menu__item {{ Request::is('client/booking*') ? 'active' : '' }}"
                         data-bs-toggle="slide" href="{{ url('client/booking') }}">
                         <i class="side-menu__icon fe fe-book"></i><span class="side-menu__label">Booking</span>
-                    </a>x
+                    </a>
                 @endcan
             </ul>
             <div class="slide-right" id="slide-right"><svg xmlns="http://www.w3.org/2000/svg" fill="#7b8191"

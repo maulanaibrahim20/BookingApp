@@ -23,7 +23,7 @@ class Booking extends Model
 
     public $incrementing = false;
 
-    public $timestamps = false;
+    // public $timestamps = false;
 
     public function getCustomer()
     {

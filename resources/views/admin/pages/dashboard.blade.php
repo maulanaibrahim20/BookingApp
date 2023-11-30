@@ -102,6 +102,44 @@
                 </div>
             </div>
         </div>
+        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-9">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Total Transactions</h3>
+                </div>
+                <div class="card-body pb-0">
+                    <div id="chartArea" class="chart-donut"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-3">
+            <div class="card custom-card ">
+                <div class="card-header">
+                    <h3 class="card-title">Recent Orders</h3>
+                </div>
+                <div class="card-body pt-0 ps-0 pe-0">
+                    <div id="recentorders" class="apex-charts ht-150"></div>
+                    <div class="row sales-product-infomation pb-0 mb-0 mx-auto wd-100p mt-6">
+                        <div class="col-md-6 col justify-content-center text-center">
+                            <p class="mb-0 d-flex justify-content-center"><span class="legend bg-primary"></span>Delivered
+                            </p>
+                            <h3 class="mb-1 fw-bold">5238</h3>
+                            <div class="d-flex justify-content-center ">
+                                <p class="text-muted mb-0">Last 6 months</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col text-center float-end">
+                            <p class="mb-0 d-flex justify-content-center "><span
+                                    class="legend bg-background2"></span>Cancelled</p>
+                            <h3 class="mb-1 fw-bold">3467</h3>
+                            <div class="d-flex justify-content-center ">
+                                <p class="text-muted mb-0">Last 6 months</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="row">
         <div class="col-12 col-sm-12">
@@ -122,13 +160,15 @@
                                         <th class="bg-transparent border-bottom-0">Date</th>
                                         <th class="bg-transparent border-bottom-0">Makeup</th>
                                         <th class="bg-transparent border-bottom-0">Status</th>
+                                        <th class="bg-transparent border-bottom-0">Payment Status</th>
                                     </tr>
                                 </thead>
                                 @foreach ($booking as $item)
                                     <tbody>
                                         <tr class="border-bottom">
 
-                                            <td class="text-muted fs-15 fw-semibold text-center">{{ $loop->iteration }}</td>
+                                            <td class="text-muted fs-15 fw-semibold text-center">{{ $loop->iteration }}
+                                            </td>
                                             <td class="text-muted fs-15 fw-semibold text-center">
                                                 {{ $item->id_booking }}</td>
                                             <td class="text-muted fs-15 fw-semibold text-center">
@@ -176,6 +216,13 @@
                                                     <span class="text-danger fs-15 fw-semibold">Ditolak</span>
                                                 @endif
                                             </td>
+                                            <td class="text-success fs-15 fw-semibold">
+                                                @if ($item->payment_status == 'paid')
+                                                    <span class="text-success fs-15 fw-semibold">Paid</span>
+                                                @elseif ($item->payment_status == 'unpaid')
+                                                    <span class="text-primary fs-15 fw-semibold">Unpaid</span>
+                                                @endif
+                                            </td>
                                         </tr>
                                     </tbody>
                                 @endforeach
@@ -190,4 +237,193 @@
         </div>
         <!-- COL END -->
     </div>
+@endsection
+@section('js')
+    <script>
+        function chartArea() {
+
+            /*-----echart1-----*/
+            var options = {
+                chart: {
+                    height: 320,
+                    type: "line",
+                    stacked: false,
+                    toolbar: {
+                        show: true,
+                        tools: {
+                            download: true,
+                            selection: false,
+                            zoom: false,
+                            zoomin: true,
+                            zoomout: true,
+                            pan: false,
+                            reset: true | '<img src="/static/icons/reset.png" width="20">'
+                        },
+                    },
+                    dropShadow: {
+                        enabled: true,
+                        opacity: 0.1,
+                    },
+                },
+                colors: [myVarVal, "#f99433", 'rgba(119, 119, 142, 0.05)'],
+                dataLabels: {
+                    enabled: false
+                },
+                stroke: {
+                    curve: "smooth",
+                    width: [3, 3, 0],
+                    dashArray: [0, 4],
+                    lineCap: "round"
+                },
+                grid: {
+                    padding: {
+                        left: 0,
+                        right: 0
+                    },
+                    strokeDashArray: 3
+                },
+                markers: {
+                    size: 0,
+                    hover: {
+                        size: 0
+                    }
+                },
+                series: [{
+                    name: "Total Orders",
+                    type: 'line',
+                    data: [0, 45, 30, 75, 15, 94, 40, 115, 30, 105, 65, 110]
+
+                }, {
+                    name: "Total Sales",
+                    type: 'line',
+                    data: [0, 60, 20, 130, 75, 130, 75, 140, 64, 130, 85, 120]
+                }, {
+                    name: "",
+                    type: 'area',
+                    data: [0, 105, 70, 175, 85, 154, 90, 185, 120, 145, 185, 130]
+                }],
+                xaxis: {
+                    type: "month",
+                    categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+                    axisBorder: {
+                        show: false,
+                        color: 'rgba(119, 119, 142, 0.08)',
+                    },
+                    labels: {
+                        style: {
+                            color: '#8492a6',
+                            fontSize: '12px',
+                        },
+                    },
+                },
+                yaxis: {
+                    labels: {
+                        style: {
+                            color: '#8492a6',
+                            fontSize: '12px',
+                        },
+                    },
+                    axisBorder: {
+                        show: false,
+                        color: 'rgba(119, 119, 142, 0.08)',
+                    },
+                },
+                fill: {
+                    gradient: {
+                        inverseColors: false,
+                        shade: 'light',
+                        type: "vertical",
+                        opacityFrom: 0.85,
+                        opacityTo: 0.55,
+                        stops: [0, 100, 100, 100]
+                    }
+                },
+                tooltip: {
+                    show: false
+                },
+                legend: {
+                    position: "top",
+                    show: true
+                }
+            }
+            document.querySelector("#chartArea").innerHTML = "";
+            var chart = new ApexCharts(document.querySelector("#chartArea"), options);
+            chart.render();
+        }
+        chartArea();
+
+        function recentOrders() {
+            var options = {
+                chart: {
+                    height: 305,
+                    type: 'radialBar',
+                    responsive: 'true',
+                    offsetX: 0,
+                    offsetY: 10,
+                },
+                plotOptions: {
+                    radialBar: {
+                        startAngle: -135,
+                        endAngle: 135,
+                        size: 120,
+                        imageWidth: 50,
+                        imageHeight: 50,
+                        track: {
+                            strokeWidth: "80%",
+                        },
+                        dropShadow: {
+                            enabled: false,
+                            top: 0,
+                            left: 0,
+                            bottom: 0,
+                            blur: 3,
+                            opacity: 0.5
+                        },
+                        dataLabels: {
+                            name: {
+                                fontSize: '16px',
+                                color: undefined,
+                                offsetY: 30,
+                            },
+                            hollow: {
+                                size: "60%"
+                            },
+                            value: {
+                                offsetY: -10,
+                                fontSize: '22px',
+                                color: undefined,
+                                formatter: function(val) {
+                                    return val + "%";
+                                }
+                            }
+                        }
+                    }
+                },
+                colors: ['#ff5d9e'],
+                fill: {
+                    type: "gradient",
+                    gradient: {
+                        shade: "gradient",
+                        type: "horizontal",
+                        shadeIntensity: .5,
+                        gradientToColors: [myVarVal],
+                        inverseColors: !0,
+                        opacityFrom: 1,
+                        opacityTo: 1,
+                        stops: [0, 100]
+                    }
+                },
+                stroke: {
+                    dashArray: 4
+                },
+                series: [83],
+                labels: [""]
+            };
+
+            document.querySelector("#recentorders").innerHTML = "";
+            var chart = new ApexCharts(document.querySelector("#recentorders"), options);
+            chart.render();
+        }
+        recentOrders();
+    </script>
 @endsection

@@ -19,15 +19,10 @@
             </ol>
         </div>
         <div class="ms-auto pageheader-btn">
-            <a href="javascript:void(0);" class="btn btn-primary btn-icon text-white me-2">
+            <a href="{{ url('/') }}" class="btn btn-success btn-icon text-white">
                 <span>
-                    <i class="fe fe-plus"></i>
-                </span> Add Account
-            </a>
-            <a href="javascript:void(0);" class="btn btn-success btn-icon text-white">
-                <span>
-                    <i class="fe fe-log-in"></i>
-                </span> Export
+                    <i class="fe fe-book"></i>
+                </span> Booking Now!
             </a>
         </div>
     </div>
@@ -49,7 +44,8 @@
                                     <th>Type Makeup</th>
                                     <th>Tanggal Booking</th>
                                     <th>Waktu Booking</th>
-                                    <th><strong>status</strong></th>
+                                    {{-- <th><strong>status</strong></th> --}}
+                                    <th><strong>payment</strong></th>
                                     <th><strong>Action</strong></th>
                                 </tr>
                             </thead>
@@ -60,9 +56,9 @@
                                         <td>{{ $data->name }}</td>
                                         <td class="text-center">{{ $data->getMakeup->name }}</td>
                                         <td class="text-center">{{ $data->getTypeMakeup->name }}</td>
-                                        <td>{{ date('d F Y', strtotime($data->tanggal_booking)) }}</td>
+                                        <td class="text-center">{{ date('d F Y', strtotime($data->tanggal_booking)) }}</td>
                                         <td class="text-center">{{ $data->waktu_booking }}</td>
-                                        <td>
+                                        {{-- <td>
                                             @if ($data->status == 0)
                                                 <span class="badge rounded-pill bg-warning me-1 mb-1 mt-1">Pending</span>
                                             @elseif ($data->status == 1)
@@ -70,11 +66,28 @@
                                             @elseif ($data->status == 3)
                                                 <span class="badge rounded-pill bg-danger me-1 mb-1 mt-1">Ditolak</span>
                                             @endif
+                                        </td> --}}
+                                        <td class="text-center">
+                                            @if ($data->payment_status == 'paid')
+                                                <span class="badge rounded-pill bg-primary me-1 mb-1 mt-1">Paid</span>
+                                            @elseif ($data->payment_status == 'unpaid')
+                                                <span class="badge rounded-pill bg-danger me-1 mb-1 mt-1">Unpaid</span>
+                                            @endif
                                         </td>
                                         <td class="text-center">
-                                            <a class="btn btn-icon btn-warning" data-bs-toggle="modal"
-                                                data-bs-target="#EditModal{{ $data->id_booking }}"><i
-                                                    class="fe fe-edit"></i></a>
+                                            @if ($data->payment_status == 'paid')
+                                                <a href="{{ url('/client/booking/view_invoice/' . $data->id_booking) }}"
+                                                    class="btn btn-success btn-icon text-white">
+                                                    <i class="fa fa-print"></i>
+                                                </a>
+                                            @elseif ($data->payment_status == 'unpaid')
+                                                <a href="{{ url('/client/booking/payment/' . $data->id_order) }}"
+                                                    class="btn btn-primary"><i class="fa fa-money"></i></a>
+                                            @endif
+                                            <a class="btn btn-primary" data-bs-effect="effect-scale" data-bs-toggle="modal"
+                                                data-bs-target="#modalView{{ $data->id_booking }}">
+                                                <i class="fa fa-eye"></i>
+                                            </a>
                                             <button id="deletePasien" data-kode="{{ $data->id_customer }}"
                                                 class="btn btn-danger ">
                                                 <i class="fa fa-trash"></i>
@@ -148,6 +161,59 @@
                             <button class="btn btn-light" data-bs-dismiss="modal">Close</button>
                         </div>
                     </form>
+                </div>
+            </div>
+        </div>
+    @endforeach
+
+    @foreach ($booking as $view)
+        <div class="modal fade" id="modalView{{ $view->id_booking }}">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <!-- Modal View Start -->
+                    <div class="modal-header">
+                        <h5 class="modal-title" th:text="${company.id != null} ? 'View Company' : 'View Company'"></h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="card-body">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Nama Event</th>
+                                        <td> {{ $view->name }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Makeup</th>
+                                        <td ="">{{ $view->getMakeup->name }}</td>
+                                        <td ="">{{ $view->getTypemakeup->name }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Tanggal/Jam Booking</th>
+                                        <td ="">{{ date('d F Y', strtotime($view->tanggal_booking)) }}</td>
+                                        <td ="">{{ $view->waktu_booking }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Price</th>
+                                        <td>Rp.{{ $view->getMakeup->price }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Payment</th>
+                                        <td>
+                                            @if ($data->payment_status == 'paid')
+                                                <span class="badge rounded-pill bg-primary me-1 mb-1 mt-1">Paid</span>
+                                            @elseif ($data->payment_status == 'unpaid')
+                                                <span class="badge rounded-pill bg-danger me-1 mb-1 mt-1">Unpaid</span>
+                                            @endif
+                                        </td>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- Modal View End -->
                 </div>
             </div>
         </div>
